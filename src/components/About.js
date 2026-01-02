@@ -1,33 +1,42 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-
-  const [btntext, setBtnText] = useState("Enable Dark mode");
-
-  const toggleStyle = () => {
-    if (myStyle.color == "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "1px solid white",
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Dark mode");
-    }
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "#042743",
+    backgroundColor: props.mode === "dark" ? "rgb(36,74,104)" : "white",
   };
 
+  // const [btntext, setBtnText] = useState("Enable Dark mode");
+
+  // const toggleStyle = () => {
+  //   if (myStyle.color == "black") {
+  //     setMyStyle({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //       border: "1px solid white",
+  //     });
+  //     setBtnText("Enable Light Mode");
+  //   } else {
+  //     setMyStyle({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setBtnText("Enable Dark mode");
+  //   }
+  // };
+
   return (
-    <div className="container" style={myStyle}>
-      <h1 className="my-3">About Us</h1>
+    <div className="container">
+      <h1
+        className="my-3"
+        style={{ color: props.mode === "dark" ? "white" : "#042743" }}
+      >
+        About Us
+      </h1>
 
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -41,7 +50,7 @@ export default function About() {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Accordion Item #1
+              <strong>Analyze your text</strong>
             </button>
           </h2>
           <div
@@ -51,14 +60,11 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              TextUtility is a simple and powerful web tool designed to help you
+              analyze and transform your text efficiently. You can convert text
+              to uppercase or lowercase, copy text instantly, remove extra
+              spaces, and perform many other useful text operations in one
+              place.
             </div>
           </div>
         </div>
@@ -73,7 +79,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Accordion Item #2
+              <strong>Free to Use</strong>
             </button>
           </h2>
           <div
@@ -83,14 +89,10 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              TextUtility is completely free to use and does not require any
+              sign-up. It works smoothly on all modern web browsers, making it
+              accessible anytime, anywhere—whether you are using a desktop,
+              laptop, or mobile device.
             </div>
           </div>
         </div>
@@ -105,7 +107,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              <strong>Browser Compatibility</strong>
             </button>
           </h2>
           <div
@@ -115,23 +117,11 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              This tool is perfect for students, developers, content writers,
+              and anyone who works with text daily.
             </div>
           </div>
         </div>
-      </div>
-      <div className="container my-3">
-        {" "}
-        <button onClick={toggleStyle} type="button" className="btn btn-primary">
-          {btntext}
-        </button>
       </div>
     </div>
   );
